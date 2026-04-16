@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, Modal, Button } from 'react-native'
 import React, { useState } from 'react'
-import { Switch } from 'react-native-gesture-handler'
+import { Switch } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import Positivo from './Positivo';
 
 
 
@@ -30,13 +32,27 @@ export default function Tarjeta({ datos }: any) {
                 />
                 <Text>Comentarios{"\n\n\n\n"} </Text>
 
-                <view style={{flexDirection:'row'}}>
+                <View style={{ flexDirection: 'row' }}>
                     <Text>Positivos</Text>
-                    <Switch 
-                    value={positivo} 
-                    onChange={()=> setpositivo(!positivo)}/>
+                    <Switch
+                        value={positivo}
+                        onValueChange={(value) => setpositivo(!positivo)}
+                    />
                     <Text>Negativos</Text>
-                </view>
+                </View>
+
+
+                {
+                    positivo == true
+                        ? <Positivo comentarios = {datos.opiniones.opiniones_positivas.detalles} />
+                        : <FlatList
+                            data={datos.opiniones.opiniones_negativas.detalles}
+                            renderItem={({ item }) => 
+                                <Text>{item.opinion} </Text>
+                    }
+                        />
+
+                }
 
 
 

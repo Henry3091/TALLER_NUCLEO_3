@@ -6,13 +6,14 @@ import GuardarScreen from '../screens/GuardarScreen';
 import NotasScreen from '../screens/NotasScreen';
 import ListaScreen from '../screens/ListaScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import InformacionScreen from '../screens/InformacionScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator initialRouteName='Drawer'>
+    <Stack.Navigator initialRouteName='Login'>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Registro" component={RegistroScreen} />
       <Stack.Screen name="Drawer" component={MyDrawer} />
@@ -22,10 +23,11 @@ function MyStack() {
 
 function MyDrawer() {
   return (
-    <Drawer.Navigator initialRouteName='Peliculas'>
+    <Drawer.Navigator initialRouteName='Guardar'>
       <Drawer.Screen name="Guardar" component={GuardarScreen} />
       <Drawer.Screen name="Peliculas" component={ListaScreen} />
       <Drawer.Screen name="Notas" component={NotasScreen} />
+      <Drawer.Screen name="Informacion" component={InformacionScreen}/>
     </Drawer.Navigator>
   );
 }
