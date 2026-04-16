@@ -13,13 +13,13 @@ export default function GuardarScreen() {
 
     const [id, setid] = useState("")
 
-    function guaradarUsuario() {
-        set(ref(db, 'usuarios/' + id), {
-            notas:{
+    function guaradarNota() {
+        set(ref(db, 'usuarios/' + id + "/nota/"+titulo), {
+           
                 titulo: titulo,
                 descripcion: descripcion,
                 fecha: fecha
-            }
+            
         });
         settitulo("")
         setdescripcion("")
@@ -66,7 +66,7 @@ useEffect(() => {
                 value={fecha}
             />
 
-            <Button title='guardar' onPress={guaradarUsuario} />
+            <Button title='guardar' onPress={guaradarNota} />
 
 
 
